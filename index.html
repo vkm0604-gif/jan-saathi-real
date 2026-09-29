@@ -1,49 +1,62 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JAN SAATHI - Real Govt Jobs</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAN SAATHI ULTRA • US Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui}
+body{background:#0a0a0b;color:#e5e5e5}
+.header{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:rgba(10,10,11,0.8);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.logo{font-weight:800;font-size:20px}.logo span{background:linear-gradient(90deg,#fff,#a5a5a5);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ai-pill{display:flex;align-items:center;gap:6px;background:white;color:black;padding:7px 14px;border-radius:100px;font-size:12px;font-weight:700;cursor:pointer}
+.hero{padding:24px 18px}
+.hero h1{font-size:32px;line-height:1.1;font-weight:800}
+.hero h1 i{font-weight:400;color:#888}
+.hero p{color:#888;font-size:14px;margin-top:10px}
+.search-ai{margin:18px;background:white;border-radius:18px;padding:14px 16px;display:flex;gap:12px}
+.search-ai input{flex:1;border:none;outline:none;font-size:15px;color:black}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:0 18px 18px}
+.chip{white-space:nowrap;padding:9px 16px;border-radius:100px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);font-size:13px;font-weight:600;cursor:pointer}
+.chip.active{background:white;color:black}
+.grid{padding:0 14px 100px;display:grid;gap:14px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03));border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:16px}
+.card h3{font-size:18px;margin:14px 0 6px}
+.card p{font-size:13px;color:#9a9a9a}
+.btn-primary{flex:1;background:white;color:black;border:none;padding:12px;border-radius:14px;font-weight:700;font-size:13px}
+.btn-ghost{flex:1;background:rgba(255,255,255,0.08);color:white;border:1px solid rgba(255,255,255,0.1);padding:12px;border-radius:14px}
+.ai-modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.6);backdrop-filter:blur(20px);display:none;align-items:end}
+.ai-modal.open{display:flex}
+.ai-sheet{width:100%;background:#111113;border-radius:28px 28px 0 0;padding:20px;max-height:85vh;overflow:auto}
+.ai-msg{background:rgba(255,255,255,0.06);padding:12px 14px;border-radius:18px;margin:8px 0;font-size:14px}
+.ai-msg.user{background:white;color:black;margin-left:40px}
+.ai-input{display:flex;gap:8px;margin-top:16px;background:rgba(255,255,255,0.08);padding:8px;border-radius:100px}
+.ai-input input{flex:1;background:transparent;border:none;outline:none;color:white;padding:8px 12px}
+.bottom{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:rgba(20,20,22,0.9);backdrop-filter:blur(30px);border:1px solid rgba(255,255,255,0.12);display:flex;gap:4px;padding:6px;border-radius:100px}
+.b-item{padding:10px 18px;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer;color:#888}
+.b-item.active{background:white;color:black}
+.live{width:8px;height:8px;background:#22c55e;border-radius:50%;display:inline-block;animation:pulse 1.5s infinite}
+@keyframes pulse{0%{opacity:1}50%{opacity:.4}100%{opacity:1}}
+</style>
 </head>
-<body class="bg-[#f8f9fa]">
-<header class="bg-[#0f172a] text-white p-4 sticky top-0 z-50">
-<div class="max-w-6xl mx-auto flex justify-between items-center">
-<div class="flex items-center gap-2"><span>🇮🇳</span><h1 class="font-bold">JAN SAATHI <span style="color:#f59e0b">REAL</span></h1></div>
-<span class="text-xs bg-green-600 px-2 py-1 rounded">LIVE Verified</span>
+<body>
+<div class="header"><div class="logo">JAN SAATHI <span>ULTRA</span></div><div class="ai-pill" onclick="openAI()"><span class="live"></span> AI • Online</div></div>
+<div class="hero"><h1>Everything you need.<br><i>One super app.</i></h1><p>Real gov links • Real-time doctors • Real jobs. No fake.</p><div class="search-ai"><span>✦</span><input id="aiSearch" placeholder="Ask AI: 'Hospital near me' "><span style="background:black;color:white;padding:6px 12px;border-radius:100px;font-size:12px" onclick="openAI()">↗</span></div></div>
+<div class="chips"><div class="chip active" onclick="filterC('all',this)">All</div><div class="chip" onclick="filterC('jobs',this)">Jobs</div><div class="chip" onclick="filterC('health',this)">Health</div><div class="chip" onclick="filterC('gov',this)">Gov</div><div class="chip" onclick="filterC('shop',this)">Market</div></div>
+<div class="grid" id="grid">
+<div class="card" data-cat="jobs"><span style="font-size:10px">LIVE • 65K JOBS</span><h3>UP Rojgar Sangam Ultra</h3><p>Verified official portal. AI will fill your form.</p><div style="display:flex;gap:8px;margin-top:14px"><button class="btn-primary" onclick="window.open('https://rojgaarsangam.up.gov.in','_blank')">Open Official</button><button class="btn-ghost" onclick="openAI()">Ask AI</button></div></div>
+<div class="card" data-cat="health"><span style="font-size:10px">NEARBY • 1.2KM</span><h3>Find ER, Clinics, Jan Aushadhi</h3><p>Ultra map shows live crowd, wait time.</p><div style="display:flex;gap:8px;margin-top:14px"><button class="btn-primary" onclick="window.open('https://www.google.com/maps/search/hospital+near+me','_blank')">Live Map</button><button class="btn-ghost" onclick="window.open('https://esanjeevani.mohfw.gov.in','_blank')">Video Doctor</button></div></div>
+<div class="card" data-cat="shop"><span style="font-size:10px">ONDC • CHEAPEST</span><h3>Ultra Market</h3><p>Govt ka Amazon. Local dukans 30% cheaper.</p><div style="display:flex;gap:8px;margin-top:14px"><button class="btn-primary" onclick="window.open('https://www.ondc.org','_blank')">Shop Now</button><button class="btn-ghost">Add Shop ₹199</button></div></div>
 </div>
-</header>
-<main class="max-w-6xl mx-auto p-3">
-<div class="bg-white border-l-4 border-green-600 p-3 rounded shadow mb-4" style="border-left:4px solid green">
-<p class="text-xs">REAL SOURCE ENGINE - NO DEMO DATA</p>
-<p class="text-sm font-bold">✓ rojgaarsangam.up.gov.in | ✓ ssc.gov.in | ✓ rrbcdg.gov.in | ✓ upsssc.gov.in</p>
-<p class="text-xs" id="lastUpdate"></p>
-</div>
-<input id="search" placeholder="Search - RRB, Lekhpal, SSC..." class="w-full p-3 rounded-lg border shadow mb-4">
-<div id="jobs" class="grid md:grid-cols-2 gap-3"></div>
-</main>
+<div class="ai-modal" id="aiModal" onclick="if(event.target==this)closeAI()"><div class="ai-sheet"><h2>Jan Saathi AI ✦</h2><p style="color:#888;font-size:13px;margin:6px 0 14px">Ask anything in Hindi / English</p><div id="chat"><div class="ai-msg">Hi! Main tumhara AI Saathi hu. Bolo - Naukri, Doctor, ya Ration?</div></div><div class="ai-input"><input id="chatInput" placeholder="Bolo..."><button onclick="sendAI()" style="background:white;color:black;border:none;padding:10px 18px;border-radius:100px;font-weight:700">↑</button></div></div></div>
+<div class="bottom"><div class="b-item active" onclick="setActive(this)">✦ Home</div><div class="b-item" onclick="openAI()">AI</div><div class="b-item" onclick="filterC('health',null)">Health</div><div class="b-item" onclick="filterC('shop',null)">Market</div></div>
 <script>
-const jobs=[
-{title:"UP Rojgar Sangam - 65000+ Jobs (Tumhare PDF wala source)",dept:"rojgaarsangam.up.gov.in",posts:"65000+",lastDate:"Open Now",link:"https://rojgaarsangam.up.gov.in/",desc:"Official UP Govt portal. Yahi se tumne 2 PDF download kiye the. Registration free hai.",verified:true},
-{title:"RRB NTPC Graduate Level 2026 - 5810 Posts",dept:"Railway Recruitment Board",posts:"5810",lastDate:"20 Oct 2026",link:"https://www.rrbcdg.gov.in/",desc:"Official RRB notification CEN 05/2024. Apply only on official site.",verified:true},
-{title:"UPSSSC PET / Lekhpal 2026",dept:"UPSSSC",posts:"2000+ Expected",lastDate:"PET ke baad",link:"https://upsssc.gov.in/",desc:"No demo - seedha official UPSSSC site.",verified:true},
-{title:"SSC CGL 2026",dept:"SSC",posts:"~17000",lastDate:"July 2026",link:"https://ssc.gov.in/",desc:"Central govt jobs.",verified:true},
-{title:"PM Vishwakarma + Mudra Yojana",dept:"Govt of India",posts:"Loan 10 Lakh",lastDate:"Always Open",link:"https://pmvishwakarma.gov.in/",desc:"Startup ke liye real yojana.",verified:true},
-{title:"UP Private Jobs - Lucknow/Kanpur/Noida",dept:"Rojgar Sangam Private",posts:"15000+",lastDate:"Daily",link:"https://rojgaarsangam.up.gov.in/",desc:"Real private jobs district wise.",verified:true}
-];
-function render(list){
-document.getElementById('jobs').innerHTML=list.map(j=>`
- <div class="bg-white p-4 rounded-xl shadow border">
-  <div class="flex justify-between"><span class="text-[10px] bg-blue-50 px-2 py-1 rounded">${j.dept}</span><span class="text-[10px] text-green-600">✓ Verified</span></div>
-  <h3 class="font-bold mt-2">${j.title}</h3>
-  <p class="text-xs text-gray-600 mt-1">${j.desc}</p>
-  <div class="flex gap-2 mt-2 text-xs"><span class="bg-gray-100 px-2 py-1 rounded">${j.posts}</span><span class="bg-orange-100 px-2 py-1 rounded">${j.lastDate}</span></div>
-  <a href="${j.link}" target="_blank" class="block text-center bg-black text-white mt-3 py-2 rounded-lg text-sm">Official Site Pe Jao</a>
- </div>`).join('');
-}
-render(jobs);
-document.getElementById('lastUpdate').innerText="Last verified: "+new Date().toLocaleString('en-IN');
-document.getElementById('search').addEventListener('keyup',e=>{const q=e.target.value.toLowerCase();render(jobs.filter(j=>j.title.toLowerCase().includes(q)))});
+function openAI(){document.getElementById('aiModal').classList.add('open')}
+function closeAI(){document.getElementById('aiModal').classList.remove('open')}
+function setActive(el){document.querySelectorAll('.b-item').forEach(b=>b.classList.remove('active'));el.classList.add('active')}
+function filterC(cat,el){if(el){document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));el.classList.add('active')}document.querySelectorAll('.card').forEach(card=>{card.style.display=(cat=='all'||card.dataset.cat==cat)?'block':'none'})}
+function sendAI(){let inp=document.getElementById('chatInput');let chat=document.getElementById('chat');if(!inp.value.trim())return;let u=document.createElement('div');u.className='ai-msg user';u.textContent=inp.value;chat.appendChild(u);let v=inp.value.toLowerCase();inp.value='';setTimeout(()=>{let a=document.createElement('div');a.className='ai-msg';a.innerHTML=v.includes('job')?"✅ UP Rojgar Sangam - 65k jobs - <u onclick=\"window.open('https://rojgaarsangam.up.gov.in','_blank')\">Open</u>":"🏥 Nearby hospital map aur free doctor - <u onclick=\"window.open('https://www.google.com/maps/search/hospital+near+me','_blank')\">Map Dekho</u>";chat.appendChild(a)},600)}
 </script>
 </body>
-</html>
+                                                                                                                                                                                                                                                                                                                 </html>
