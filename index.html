@@ -2,11 +2,11 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ANANTAPUR Xpress - BHARAT Real Form Filler</title>
+<title>ANANTAPUR Xpress - BHARAT</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;900&family=Syne:wght@800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:#070708;color:#fff}
+body{background:#070708;color:#fff;padding-bottom:90px}
 .top{background:#fff;color:#000;text-align:center;padding:7px;font-size:10px;font-weight:900}
 .hdr{padding:16px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10;background:rgba(7,7,8,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.07)}
 .logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800}.logo em{font-size:9px;color:#777;display:block;font-style:normal;margin-top:3px;letter-spacing:2px}
@@ -17,20 +17,25 @@ body{background:#070708;color:#fff}
 .h1{font-family:'Syne',sans-serif;font-size:44px;line-height:0.85;letter-spacing:-1.5px}.h1 span{color:#333}
 .sub{color:#666;font-size:13px;margin-top:10px;max-width:320px;line-height:1.4}
 .card{background:#fff;color:#000;border-radius:28px;padding:20px;margin-top:18px;box-shadow:0 20px 80px rgba(255,255,255,0.18)}
-.inp{background:#f2f2f3;border-radius:14px;padding:14px;display:flex;gap:10px;margin-top:12px}
-.inp input{flex:1;border:none;outline:none;background:transparent;font-weight:800;font-size:14px;color:#000}
+.inp{background:#f2f2f3;border-radius:14px;padding:14px;display:flex;gap:10px;margin-top:12px;border:2px solid transparent}
+.inp:focus-within{border-color:#000}
+.inp input{flex:1;border:none;outline:none;background:transparent;font-weight:800;font-size:15px;color:#000}
 .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px}
 .box{background:#f2f2f3;border:1.5px dashed #d0d0d0;border-radius:18px;padding:14px;text-align:center;cursor:pointer}
 .box b{font-size:22px;display:block}.box span{font-size:8px;font-weight:900;color:#666;display:block;margin-top:5px}
 .go{margin-top:14px;width:100%;background:#000;color:#fff;padding:15px;border-radius:16px;border:none;font-weight:900;font-size:14px;cursor:pointer}
-.feed{display:grid;gap:8px;padding:0 14px 110px;margin-top:14px}
+.suggest{margin-top:10px;background:#f7f7f8;border-radius:14px;display:none;overflow:hidden;border:1px solid #e5e5e5}
+.suggest.on{display:block}
+.s-item{padding:12px 14px;font-size:13px;font-weight:800;border-bottom:1px solid #eee;cursor:pointer;color:#000;display:flex;justify-content:space-between}
+.s-item:last-child{border:none}
+.s-item:hover{background:#eee}
+.feed{display:grid;gap:8px;padding:14px 14px 0}
 .row{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
 .row b{font-size:12px}.row i{font-style:normal;font-size:10px;color:#666}
-.nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:rgba(20,20,22,0.96);backdrop-filter:blur(30px);border:1px solid rgba(255,255,255,0.12);display:flex;padding:5px;border-radius:100px;z-index:5}
-.n{padding:10px 18px;border-radius:100px;font-size:11px;font-weight:700;color:#666}.n.on{background:#fff;color:#000}
+.nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:rgba(20,20,22,0.96);backdrop-filter:blur(30px);border:1px solid rgba(255,255,255,0.12);display:flex;padding:5px;border-radius:100px;z-index:20}
+.n{padding:10px 18px;border-radius:100px;font-size:11px;font-weight:700;color:#666;cursor:pointer}.n.on{background:#fff;color:#000}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(24px);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}.modal.open{display:flex}
 .sheet{background:#111114;border:1px solid rgba(255,255,255,0.1);border-radius:28px;padding:22px;width:100%;max-width:380px}
-/* REAL FORM STYLES */
 .fhead{background:#fff;color:#000;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
 .prog{height:4px;background:#222}.prog div{height:100%;background:#00ff6a;width:33%;transition:.4s}
 .fbody{padding:18px}
@@ -39,115 +44,86 @@ body{background:#070708;color:#fff}
 .step{display:none}.step.active{display:block}
 .vlist{display:grid;gap:8px;margin-top:12px}
 .v{border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);padding:12px 14px;border-radius:14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.v.on{background:#fff;color:#000;border-color:#fff}
+.v.on{background:#fff;color:#000}
 </style>
 </head>
 <body>
-
-<!-- PAGE 1 : HOME -->
 <div id="p1" class="page on">
-<div class="top">🇮🇳 BHARAT • ANANTAPUR XPRESS • MEJA • PRAYAGRAJ • REAL FORM FILLER</div>
+<div class="top">🇮🇳 BHARAT • ANANTAPUR XPRESS • MEJA • PRAYAGRAJ</div>
 <div class="hdr"><div class="logo">ANANTAPUR<em>XPRESS • BHARAT FORM ONLY</em></div><div class="pill"><span class="dot"></span> BHARAT LIVE</div></div>
 <div class="wrap">
 <div class="h1">KOI BHI<br>FORM<span>.</span><br>BHARAT<span>.</span></div>
-<div class="sub">Jo bhi vacancy aayi - link paste karo ya neeche se chuno - AI 1st to last bhar dega. US Speed, Bharat Ka.</div>
+<div class="sub">Vacancy ka naam likho - Bihar Police, UP Police, RRB - neeche option auto ayega.</div>
 <div class="card">
 <h2 style="font-family:'Syne'">⚡ FORM BHARDO BHARAT</h2>
-<div class="inp"><span>✦</span><input id="f" placeholder="Vacancy likho: RRB, SSC, IIT JEE, Lekhpal..."></div>
+<div class="inp"><span>✦</span><input id="f" oninput="filter(this.value)" placeholder="Bihar Police, UP Police, RRB, SSC..."></div>
+<div id="suggest" class="suggest"></div>
 <div class="grid">
 <div class="box" onclick="openPopup()"><b>🪪</b><span>AADHAAR SCAN</span></div>
 <div class="box" onclick="openPopup()"><b>📸</b><span>PHOTO 20KB</span></div>
 <div class="box" onclick="openPopup()"><b>✍️</b><span>SIGN SCAN</span></div>
 </div>
 <button class="go" onclick="openPopup()">FORM BHARDO BHARAT - ₹49 →</button>
+<div style="text-align:center;font-size:10px;color:#888;margin-top:8px;font-weight:700">Type karte hi option ayega • US Speed Bharat</div>
 </div>
 </div>
-<div style="padding:12px 18px 6px;font-size:10px;font-weight:900;letter-spacing:1.5px;color:#444">🇮🇳 LATEST VACANCY • TAP TO FILL</div>
-<div class="feed">
-<div class="row" onclick="setForm('RRB NTPC 2026 - Official')"><b>🚆 RRB NTPC 2026</b><i>Last: 15 Oct • ₹49</i></div>
-<div class="row" onclick="setForm('SSC GD 2026 - Official')"><b>🪖 SSC GD 2026</b><i>Last: 20 Oct • ₹49</i></div>
-<div class="row" onclick="setForm('IIT JEE 2026 - NTA')"><b>📚 IIT JEE / NTA 2026</b><i>Last: 12 Oct • ₹49</i></div>
-<div class="row" onclick="setForm('Lekhpal - UPSSSC Meja')"><b>🏛️ Lekhpal - Meja 2026</b><i>Last: 18 Oct • ₹49</i></div>
-<div class="row" onclick="setForm('UP Police Constable')"><b>👮 UP Police 2026</b><i>Last: 25 Oct • ₹49</i></div>
-<div class="row" onclick="setForm('Ayushman / Ration / Scholarship')"><b>🏥 Ayushman / Ration / Scholarship</b><i>Always Open • ₹49</i></div>
-<div class="row" style="background:#fff;color:#000"><b style="color:#000">🏆 ANANTAPUR XPRESS BHARAT HQ</b><i style="color:#666">Anantapur, Meja</i></div>
-</div>
+<div style="padding:10px 18px 6px;font-size:10px;font-weight:900;letter-spacing:1.5px;color:#777">🇮🇳 LATEST VACANCY • TAP TO SELECT</div>
+<div class="feed" id="feed"></div>
 <div class="nav"><div class="n on">✦ Bharat Form</div><div class="n" onclick="openPopup()">AI Xpress</div><div class="n">Help</div></div>
 </div>
 
-<!-- PAGE 2 : REAL FORM -->
 <div id="p2" class="page">
 <div class="fhead"><b id="ft">BHARAT FORM</b><span onclick="goHome()" style="background:#000;color:#fff;padding:6px 12px;border-radius:100px;font-size:11px;cursor:pointer">✕ Band</span></div>
 <div class="prog"><div id="bar"></div></div>
 <div class="fbody">
-<!-- STEP 1 -->
 <div class="step active" id="s1">
-<div style="font-family:'Syne';font-size:22px">Select Vacancy + Details</div>
-<div class="lbl">Koi bhi vacancy ka official link paste karo (optional)</div>
-<input class="fin" id="link" placeholder="https://...official site link...">
-<div class="lbl">Ya neeche se chuno - jo abhi aayi hai</div>
-<div class="vlist" id="vlist">
-<div class="v on" onclick="pick(this,'RRB NTPC 2026')"><b>RRB NTPC 2026</b><span>rrbapply.gov.in</span></div>
-<div class="v" onclick="pick(this,'SSC GD 2026')"><b>SSC GD 2026</b><span>ssc.gov.in</span></div>
-<div class="v" onclick="pick(this,'IIT JEE 2026')"><b>IIT JEE 2026</b><span>jeemain.nta.nic.in</span></div>
-<div class="v" onclick="pick(this,'Lekhpal UPSSSC')"><b>Lekhpal UPSSSC</b><span>upsssc.gov.in</span></div>
-<div class="v" onclick="pick(this,'UP Police')"><b>UP Police</b><span>uppbpb.gov.in</span></div>
+<div style="font-family:'Syne';font-size:22px">Real Form Filler - <span id="selName">Bihar Police</span></div>
+<div class="lbl">Official Link (agar hai to)</div><input class="fin" id="link" placeholder="https://...">
+<div class="lbl">Full Name (Aadhaar)</div><input class="fin" placeholder="Name">
+<div class="lbl">Mobile + Aadhaar</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><input class="fin" placeholder="Mobile"><input class="fin" placeholder="Aadhaar"></div>
+<button class="go" onclick="goStep(2)" style="background:#fff;color:#000;margin-top:18px">Next →</button>
 </div>
-<div class="lbl">Pura Naam (Aadhaar)</div><input class="fin" placeholder="Vikas Kumar">
-<div class="lbl">Mobile / Aadhaar</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><input class="fin" placeholder="Mobile"><input class="fin" placeholder="Aadhaar"></div>
-<button class="go" onclick="goStep(2)" style="background:#fff;color:#000;margin-top:18px">Next - Photo Sign Doc →</button>
-</div>
-<!-- STEP 2 -->
 <div class="step" id="s2">
-<div style="font-family:'Syne';font-size:22px">Photo, Sign, Documents</div>
-<div class="lbl">Photo (Bharat AI auto 20KB)</div><input class="fin" type="file">
-<div class="lbl">Sign</div><input class="fin" type="file">
-<div class="lbl">Aadhaar / Caste / Income</div><input class="fin" type="file" multiple>
-<button class="go" onclick="goStep(3)" style="background:#fff;color:#000;margin-top:18px">Next - Fee & Submit →</button>
+<div style="font-family:'Syne';font-size:22px">Photo Sign Doc</div>
+<div class="lbl">Photo (auto 20KB)</div><input class="fin" type="file"><div class="lbl">Sign</div><input class="fin" type="file"><div class="lbl">Docs</div><input class="fin" type="file" multiple>
+<button class="go" onclick="goStep(3)" style="background:#fff;color:#000;margin-top:18px">Next - Final Submit →</button>
 </div>
-<!-- STEP 3 -->
 <div class="step" id="s3">
-<div style="font-family:'Syne';font-size:22px">Final - Official Fill</div>
+<div style="font-family:'Syne';font-size:22px">Final Submit</div>
 <div style="background:rgba(255,255,255,0.06);border-radius:16px;padding:14px;margin-top:12px;line-height:1.7;font-size:13px">
-Form: <b id="finalName">-</b><br>
-Link: <b id="finalLink" style="font-size:11px;word-break:break-all">auto official</b><br><br>
-✅ Details ok<br>✅ Photo 20KB ready<br>✅ Sign cleaned<br>✅ <span style="color:#00ff6a">Bharat AI filling on official site...</span><br><br>
-Fee: ₹49 + Govt Fee
+Form: <b id="finalName">-</b><br>Link: <b id="finalLink" style="font-size:11px;word-break:break-all">official auto</b><br><br>✅ Ready • Bharat AI filling official site...
 </div>
-<button class="go" onclick="finalSubmit()" style="background:#00ff6a;color:#000;margin-top:18px">PAY ₹49 & FILL OFFICIAL SITE →</button>
-<div style="text-align:center;margin-top:10px;font-size:11px;color:#666">Receipt WhatsApp pe ayegi - ANANTAPUR XPRESS BHARAT HQ</div>
+<button class="go" onclick="finalSubmit()" style="background:#00ff6a;color:#000;margin-top:18px">PAY ₹49 & FILL OFFICIAL →</button>
 </div>
 </div>
 </div>
 
-<!-- POPUP BEFORE REAL PAGE -->
 <div class="modal" id="m"><div class="sheet">
 <h2 style="font-family:'Syne'">BHARAT XPRESS ✦</h2>
-<p style="color:#666;font-size:11px;margin:6px 0 14px;font-weight:700">🇮🇳 MADE IN BHARAT • REAL FILLER</p>
-<div style="background:rgba(255,255,255,0.06);padding:14px;border-radius:16px;font-size:13px;line-height:1.5">
-Form: <b id="fn">-</b><br><br>
-✅ Bharat AI - US Speed ready<br>
-1. Scan ok<br>2. Photo auto 20KB<br>3. Official site fill<br>4. ₹49 Xpress<br>5. Receipt WhatsApp
-</div>
-<button onclick="openReal()" style="width:100%;margin-top:14px;background:#fff;color:#000;padding:14px;border-radius:14px;border:none;font-weight:900;font-size:14px">OK BHARAT XPRESS - REAL FORM KHOLO →</button>
+<p style="color:#666;font-size:11px;margin:6px 0 14px;font-weight:700">🇮🇳 REAL FILLER</p>
+<div style="background:rgba(255,255,255,0.06);padding:14px;border-radius:16px;font-size:13px">Form: <b id="fn">-</b><br><br>✅ US Speed Bharat AI<br>Opening real form...</div>
+<button onclick="openReal()" style="width:100%;margin-top:14px;background:#fff;color:#000;padding:14px;border-radius:14px;border:none;font-weight:900">OK - REAL FORM KHOLO →</button>
 </div></div>
 
 <script>
-let sel='RRB NTPC 2026';
-function setForm(n){document.getElementById('f').value=n;openPopup();}
-function openPopup(){document.getElementById('fn').innerText=document.getElementById('f').value||'Koi bhi form';document.getElementById('m').classList.add('open')}
-function openReal(){
-document.getElementById('m').classList.remove('open');
-document.getElementById('p1').classList.remove('on');
-document.getElementById('p2').classList.add('on');
-document.getElementById('finalName').innerText=document.getElementById('f').value||sel;
-sel=document.getElementById('f').value||sel;
-window.scrollTo(0,0)
+const data=["Bihar Police Constable 2026","Bihar Police SI 2026","UP Police Constable 2026","UP Police SI 2026","RRB NTPC 2026","RRB Group D 2026","SSC GD 2026","SSC CGL 2026","IIT JEE 2026","NEET 2026","Lekhpal UPSSSC Meja","TET PET 2026","Ayushman Card","Ration Card","Scholarship UP"];
+let sel="Bihar Police Constable 2026";
+function renderFeed(list){document.getElementById('feed').innerHTML=list.map(x=>`<div class="row" onclick="choose('${x}')"><b>🔹 ${x}</b><i>₹49</i></div>`).join('')+`<div class="row" style="background:#fff;color:#000"><b style="color:#000">🏆 ANANTAPUR XPRESS HQ</b><i style="color:#666">Meja</i></div>`}
+function filter(q){
+ const l=q.toLowerCase();
+ let f=data.filter(x=>x.toLowerCase().includes(l));
+ if(q.length==0) f=data;
+ renderFeed(f);
+ const sug=document.getElementById('suggest');
+ if(q.length>0 && f.length>0){sug.classList.add('on');sug.innerHTML=f.slice(0,5).map(x=>`<div class="s-item" onclick="choose('${x}')"><span>${x}</span><span>↗</span></div>`).join('')} else {sug.classList.remove('on')}
 }
-function goHome(){document.getElementById('p2').classList.remove('on');document.getElementById('p1').classList.add('on');goStep(1)}
-function pick(el,name){document.querySelectorAll('.v').forEach(v=>v.classList.remove('on'));el.classList.add('on');sel=name;document.getElementById('f').value=name;document.getElementById('finalName').innerText=name}
-function goStep(n){document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));document.getElementById('s'+n).classList.add('active');document.getElementById('bar').style.width=(n*33)+'%';document.getElementById('finalName').innerText=document.getElementById('f').value||sel;document.getElementById('finalLink').innerText=document.getElementById('link').value||'Official auto';window.scrollTo(0,0)}
-function finalSubmit(){alert('🎉 '+sel+' - Bharat AI ne official site pe bhar diya! Receipt WhatsApp pe ayegi.\n\nANANTAPUR XPRESS BHARAT HQ - Meja, Prayagraj');goHome()}
+function choose(name){document.getElementById('f').value=name;sel=name;document.getElementById('suggest').classList.remove('on');renderFeed(data.filter(x=>x.toLowerCase().includes(name.toLowerCase())));openPopup()}
+function openPopup(){let v=document.getElementById('f').value||sel;if(!v){alert('Pehle form ka naam likho - Bihar Police');return}document.getElementById('fn').innerText=v;document.getElementById('selName').innerText=v;document.getElementById('finalName').innerText=v;sel=v;document.getElementById('m').classList.add('open')}
+function openReal(){document.getElementById('m').classList.remove('open');document.getElementById('p1').classList.remove('on');document.getElementById('p2').classList.add('on');window.scrollTo(0,0)}
+function goHome(){document.getElementById('p2').classList.remove('on');document.getElementById('p1').classList.add('on');goStep(1);filter(document.getElementById('f').value)}
+function goStep(n){document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));document.getElementById('s'+n).classList.add('active');document.getElementById('bar').style.width=(n*33)+'%';document.getElementById('finalLink').innerText=document.getElementById('link').value||'Official auto';window.scrollTo(0,0)}
+function finalSubmit(){alert('🎉 '+sel+' - Bharat AI ne official pe bhar diya! Receipt WhatsApp pe. ANANTAPUR XPRESS BHARAT HQ');goHome()}
+renderFeed(data);
 </script>
 </body>
-  </html>
+                                          </html>
